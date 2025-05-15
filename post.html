@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Post</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>My Blog</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="post-container">
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Blog</p>
+  </footer>
+
+  <script>
+    // Get the post key from URL
+    const params = new URLSearchParams(window.location.search);
+    const postKey = params.get("post");
+
+    const posts = {
+      javascript: {
+        title: "Why JavaScript is Awesome",
+        content: "JavaScript is a versatile language that allows you to build interactive websites and applications."
+      },
+      cssgrid: {
+        title: "Understanding CSS Grid",
+        content: "CSS Grid is a powerful layout system that makes building complex web layouts much easier and more flexible."
+      },
+      html5: {
+        title: "HTML5: The Basics",
+        content: "HTML5 introduces new semantic elements, improved accessibility, and better support for multimedia content."
+      }
+    };
+
+    const container = document.getElementById("post-container");
+
+    if (postKey && posts[postKey]) {
+      const post = posts[postKey];
+      container.innerHTML = `
+        <article>
+          <h2>${post.title}</h2>
+          <p>${post.content}</p>
+        </article>
+      `;
+    } else {
+      container.innerHTML = "<p>Post not found.</p>";
+    }
+  </script>
+</body>
+</html>
